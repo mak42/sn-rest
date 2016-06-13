@@ -1,7 +1,7 @@
 # sn-rest
 NodeJS Rest-Client for Service-Now
 
-# Sampe Usage
+# Sample Usage
 ```javascript
 var snRest = require('sn-rest');
 var snClient = snRest({
