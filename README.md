@@ -10,7 +10,7 @@ var snClient = snRest({
   'pass': 'admin',
   'protocol': 'https'
 });
-snClient('incident').get('yourSysId', function(error, result) {
+snClient('incident').getRecord('yourSysId', function(error, result) {
   if(error) {
     console.log(error);
     return;
