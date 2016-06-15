@@ -16,7 +16,7 @@ $sn('incident').getRecord('216930c737bf5600dce1c2f954990eb6', function(error, re
     return;
   }
   //result is always an array of objects
-  console.log('result-lenght: ' + result.lenght);
+  console.log('result-length: ' + result.length);
   console.log('caller_id: ' + result[0].caller_id);
 
   //Simple dotWalking
