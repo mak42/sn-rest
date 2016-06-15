@@ -7,8 +7,7 @@ var snRest = require('sn-rest');
 var $sn = snRest({
   'host': 'demo01.service-now.com',
   'user': 'admin',
-  'pass': 'admin',
-  'protocol': 'https'
+  'pass': 'admin'
 });
 $sn('incident').getRecord('216930c737bf5600dce1c2f954990eb6', function(error, result) {
   if(error) {
