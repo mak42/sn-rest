@@ -1,24 +1,6 @@
 var request = require('request');
 var querystring = require('querystring');
 
-var SnRestResultObject = function(obj, config) {
-
-    function getValue(property) {
-        return {
-            value: obj[property],
-            dotWalk: function(table, callback) {
-                SnRestClient(config)(table).getRecord(obj[property], callback);
-            }
-        };
-    }
-
-    return {
-        obj: obj,
-        config: config,
-        getValue: getValue
-    };
-};
-
 function SnRestClient(config) {
 
     function validateResponse(error, response, body) {
@@ -53,12 +35,12 @@ function SnRestClient(config) {
         var resultArray = [];
         for(var i = 0; i < resultObj.records.length; i++) {
             var record = resultObj.records[i];
-            resultArray.push(new SnRestResultObject(record, config));
+            resultArray.push(record);
         }
         callback(null, resultArray);
     }
 
-    return function(table) {
+    var returnFunc = function(table) {
         return {
             config: config,
             baseUrl: (function() {
@@ -167,5 +149,11 @@ function SnRestClient(config) {
             }
         };
     };
+
+    Object.prototype.dotWalk = function(table, callback) {
+        returnFunc(table).getRecord(this.toString(), callback);
+    };
+
+    return returnFunc;
 }
 module.exports.SnRestClient = SnRestClient;
