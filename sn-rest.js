@@ -1,4 +1,4 @@
-var guid = require('guid');
+var Uuid = require('uuid-lib');
 var request = require('request');
 var querystring = require('querystring');
 
@@ -152,11 +152,12 @@ function SnRestClient(config) {
     };
 
     Object.prototype.dotWalk = function(table, callback) {
-        var sysId = this.toString();
-        if(guid.isGuid(sysId)) {
-            returnFunc(table).getRecord(sysId, callback);
+        var sysId = new Uuid(this.toString());
+        if(Uuid.isUuid(sysId) === true) {
+            returnFunc(table).getRecord(sysId.toString(), callback);
+            return;
         }
-        callback('"' + sysId + '" is not a valid Guid!');
+        callback('"' + sysId.toString() + '" is not a valid Uuid!');
     };
 
     return returnFunc;
