@@ -1,3 +1,4 @@
+var guid = require('guid');
 var request = require('request');
 var querystring = require('querystring');
 
@@ -151,9 +152,13 @@ function SnRestClient(config) {
     };
 
     Object.prototype.dotWalk = function(table, callback) {
-        returnFunc(table).getRecord(this.toString(), callback);
+        var sysId = this.toString();
+        if(guid.isGuid(sysId)) {
+            returnFunc(table).getRecord(sysId, callback);
+        }
+        callback('"' + sysId + '" is not a valid Guid!');
     };
 
     return returnFunc;
 }
-module.exports.SnRestClient = SnRestClient;
+module.exports = SnRestClient;
