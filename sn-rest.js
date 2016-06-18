@@ -1,4 +1,4 @@
-var Uuid = require('uuid-lib');
+var Uuid = require('uuid-lib'); //Is deprecated use node-uuid instead!!
 var request = require('request');
 var querystring = require('querystring');
 
@@ -28,12 +28,8 @@ function SnRestClient(config) {
             callback(valError);
             return;
         }
-        var resultObj = JSON.parse(body);
-        if(resultObj.records.length === 0) {
-            callback(null, null);
-            return;
-        }
         var resultArray = [];
+        var resultObj = JSON.parse(body);
         for(var i = 0; i < resultObj.records.length; i++) {
             var record = resultObj.records[i];
             resultArray.push(record);
@@ -45,7 +41,8 @@ function SnRestClient(config) {
         return {
             config: config,
             baseUrl: (function() {
-                return config.protocol + '://' +
+                var protocol = 'https';
+                return protocol + '://' +
                 config.host + '/' + table + '.do?JSONv2=&';
             })(),
             request: request.defaults({
