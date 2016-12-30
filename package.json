@@ -1,25 +1,26 @@
 {
-    "name": "sn-rest",
-    "version": "0.0.1",
-    "tags": [
-        "service-now",
-        "rest",
-        "jsonV2"
-    ],
-    "author": {
-        "name": "Martin Kirchweger",
-        "email": "kirchweger.mak@gmail.com"
-    },
-    "description": "NodeJS Rest-Client for Service-Now",
-    "main": "sn-rest.js",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mak42/sn-rest"
-    },
-    "dependencies": {
-        "querystring": "*",
-        "request": "*",
-        "node-uuid": "*"
-    }
+  "name": "sn-rest",
+  "version": "0.0.1",
+  "tags": [
+    "service-now",
+    "rest",
+    "jsonV2"
+  ],
+  "author": {
+    "name": "Martin Kirchweger",
+    "email": "kirchweger.mak@gmail.com"
+  },
+  "description": "NodeJS Rest-Client for Service-Now",
+  "main": "sn-rest.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mak42/sn-rest"
+  },
+  "dependencies": {
+    "promise": "^7.1.1",
+    "querystring": "^0.2.0",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  }
 }
