@@ -30,14 +30,14 @@ function SnRestClient(config) {
             getKeys: function(query) {
                 var params = querystring.stringify({
                     "sysparm_action": "getKeys",
-                    "sysparm_query" : query
+                    "sysparm_query": query
                 });
                 return this.httpClient.get(this.baseUrl + params);
             },
             get: function(sysId) {
                 var params = querystring.stringify({
                     "sysparm_action": "get",
-                    "sysparm_sys_id" : sysId
+                    "sysparm_sys_id": sysId
                 });
                 return this.httpClient.get(this.baseUrl + params);
             },
@@ -51,36 +51,36 @@ function SnRestClient(config) {
             update: function(object, query) {
                 var params = querystring.stringify({
                     "sysparm_action": "update",
-                    "sysparm_query" : query
+                    "sysparm_query": query
                 });
-                var opts = { body: JSON.stringify(object) };
+                var opts = { body: object };
                 return this.httpClient.post(this.baseUrl + params, opts);
             },
             insert: function(object) {
                 var params = querystring.stringify({
                     "sysparm_action": "insert"
                 });
-                var opts = { body: JSON.stringify(object) };
+                var opts = { body: object };
                 return this.httpClient.post(this.baseUrl + params, opts);
             },
             insertMultiple: function(recordArray) {
                 var params = querystring.stringify({
                     "sysparm_action": "insertMultiple"
                 });
-                var opts = { body: JSON.stringify(recordArray) };
+                var opts = { body: recordArray };
                 return this.httpClient.post(this.baseUrl + params, opts);
             },
             deleteRecord: function(sysId) {
                 var params = querystring.stringify({
                     "sysparm_action": "deleteRecord"
                 });
-                var opts = { body: JSON.stringify({"sysparm_sys_id": sysId }) };
+                var opts = { body: { "sysparm_sys_id": sysId } };
                 return this.httpClient.post(this.baseUrl + params, opts);
             },
             deleteMultiple: function(query) {
                 var params = querystring.stringify({
                     "sysparm_action": "deleteMultiple",
-                    "sysparm_query" : query
+                    "sysparm_query": query
                 });
                 return this.httpClient.get(this.baseUrl + params);
             }
